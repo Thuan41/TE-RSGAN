@@ -1,2 +1,2 @@
-# newGAN
-This is the source of paper newGAN.
+# TE-SRGAN
+The article proposes a novel model to improve thermal image quality using a two-stage SRGAN network.
