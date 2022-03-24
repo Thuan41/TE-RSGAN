@@ -30,4 +30,3 @@ jobs:
         run: |
           cd ~
           ls
-          mkdir thuan_data
