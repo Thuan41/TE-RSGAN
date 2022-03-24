@@ -36,7 +36,7 @@ jobs:
           git config --global user.email "thuansvk@gmail.com"
           git config --global user.name "thuan4199"
           mkdir data
-          cd thuan_folder
+          cd data
           cat > data.txt
           cd ..
           git add .
