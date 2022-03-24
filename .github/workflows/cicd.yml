@@ -36,6 +36,8 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: creat-a-folder-named-thuan_folder
         run: |
+          git config --global user.email "thuansvk@gmail.com"
+          git config --global user.name "thuan4199"
           mkdir thuan_folder
           cd thuan_folder
           cat > filename.txt
