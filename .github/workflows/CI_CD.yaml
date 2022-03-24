@@ -1,0 +1,26 @@
+name: TeamAI
+
+on: [push]
+
+jobs:
+  CIandCDprocess:
+    runs-on: [self-hosted]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install library and train dataset
+      env:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.email "<>"
+        git config --global user.name "$GITHUB_ACTOR"
+    
+        mkdir train && cd train
+
+        ls
+        git clone -b phuongdong git@github.com:sharonmann123/TeamAI.git
+        cd TeamAI
+        ls
+        ls
+
+        rm -r -f train

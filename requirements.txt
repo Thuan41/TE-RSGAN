@@ -1,0 +1,7 @@
+torch
+torchvision
+pandas
+scikit-image
+tqdm
+Pillow
+python-math

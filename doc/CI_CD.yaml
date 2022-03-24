@@ -1,0 +1,37 @@
+name: TeamAI
+
+on: [push]
+
+jobs:
+  CIandCDprocess:
+    runs-on: [self-hosted]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install library and train dataset
+      env:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.email "<>"
+        git config --global user.name "$GITHUB_ACTOR"
+        rm -r -f tesrgan
+        rm -r -f train
+        mkdir tesrgan && cd tesrgan
+        git clone -b phuongdong git@github.com:sharonmann123/TeamAI.git
+        cd TeamAI
+
+        bash ./dataset/scripts/download_dataset_from_onedrive.sh ..
+
+        python3 -m venv env
+        source env/bin/activate
+        python3 -m pip install --upgrade pip
+        pip install -r requirements.txt
+        python3 train.py
+
+
+        CODEBLOCK="> Hoàn thành training [![TeamAI](https://github.com/sharonmann123/TeamAI/actions/workflows/CI_CD.yaml/badge.svg)](https://github.com/sharonmann123/TeamAI/actions/workflows/CI_CD.yaml)  <br/>"
+        echo $CODEBLOCK >> README.md
+
+        git add epochs training_results
+        git commit -m "Training result 23_3_2022"
+        git push
